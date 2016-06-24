@@ -46,18 +46,34 @@ describe('punctuationize', function () {
       "-1",
       String("-1"),
     ].forEach(function (e) {
-      t = punct(e);
-      t.should.be.a('string');
+      punct(e).should.be.a('string');
     });
   });
 
-  it('should wipe out every ascii char but punctuations by default', function () {
-    str = Array.apply(null, new Array(127 - 32)).map(function (e, i) {
-      return String.fromCharCode(i + 32);
+  it('should wipe out every ascii char but punctuation marks by default', function () {
+    var ascS = 32,
+        ascE = 127;
+    var str = Array.apply(null, new Array(ascE - ascS)).map(function (_, i) {
+      return String.fromCharCode(i + ascS);
     }).join('');
-    ans = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-    t = punct(str);
+    var ans = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+    var t = punct(str);
     t.should.be.a('string');
     t.should.equals(ans);
+  });
+
+  it('should work well with unicode punctuation marks', function () {
+    var gPunctS = 0x2000,
+        gPunctE = 0x2070,
+        sPunctS = 0x2e00,
+        sPunctE = 0x2e80;
+    [[gPunctS, gPunctE], [sPunctS, sPunctE]].forEach(function (range) {
+      str = Array.apply(null, new Array(range[1] - range[0])).map(function (_, i) {
+        return String.fromCharCode(i + range[0]);
+      }).join('');
+      var t = punct(str);
+      t.should.be.a('string');
+      t.should.equals(str);
+    });
   });
 });
