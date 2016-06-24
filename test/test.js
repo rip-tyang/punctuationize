@@ -1,6 +1,5 @@
 var chai = require('chai');
 var punct = require('../index.js');
-var fs = require('fs');
 
 chai.should();
 chai.use(require('chai-things'));
