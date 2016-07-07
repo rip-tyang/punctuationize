@@ -56,8 +56,18 @@ describe('punctuationize', function () {
     var str = Array.apply(null, new Array(ascE - ascS)).map(function (_, i) {
       return String.fromCharCode(i + ascS);
     }).join('');
-    var ans = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+    var ans = ' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
     var t = punct(str);
+    t.should.be.a('string');
+    t.should.equals(ans);
+  });
+
+  it('should wipe out space if specified', function () {
+    var str = ' \f\n\r\t\v\u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004' +
+              '\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f' +
+              '\u3000\ufeff';
+    var ans = '';
+    var t = punct(str, {space: 'none'});
     t.should.be.a('string');
     t.should.equals(ans);
   });

@@ -4,7 +4,8 @@
   "description": "punctuationize your text, wipping out all things except punctuations.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha test/test.js"
   },
   "keywords": [
     "punctuationize",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-things": "^0.2.0",
+    "istanbul": "^0.4.4",
     "mocha": "^2.5.3"
   }
 }
