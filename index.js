@@ -4,22 +4,30 @@ module.exports = (function () {
 
   function makeDefault(config) {
     config = config || {};
-    config.space = config.space || "keep";
+    config.space = config.space || 'single';
     return config;
   }
 
   function punctuationize(text, config) {
-    if (!(typeof text === "string") && !(text instanceof String)) {
+    if (!(typeof text === "string" || text instanceof String)) {
       throw new Error("Input " + text + " is not a string or string object.");
     }
     var res = text.replace(notPunctReg, '');
-
     config = makeDefault(config);
     if (config.space === 'none') {
       res = res.replace(/\s/g, '');
     }
     else if (config.space === 'single') {
-      res = res.replace(/\s\s+/g, ' ');
+      // keep only single line break, in unix style
+      res = res.replace(/\r\n/g, '\n')
+        .replace(/\r/g, '\n')
+        .replace(/\n\n+/g, '\n')
+      // remove trailing space
+        .replace(/\s+$/mg, '')
+      // remove leading space
+        .replace(/^\s+/mg, '')
+      // keep only single space
+        .replace(/\s\s+/g, ' ');
     }
     return res;
 
