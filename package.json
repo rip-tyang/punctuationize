@@ -4,7 +4,9 @@
   "description": "punctuationize your text, wipping out all things except punctuations.",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "npm run eslint && npm run coverage",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "eslint": "eslint index.js"
   },
   "keywords": [
     "punctuationize",
@@ -19,6 +21,8 @@
     "coveralls": "^2.11.9",
     "eslint": "^3.0.1",
     "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-mocha": "^4.0.0",
     "eslint-plugin-react": "^5.2.2",
     "istanbul": "^0.4.4",
