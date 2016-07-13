@@ -72,7 +72,7 @@ describe('punctuationize', () => {
     t.should.equals(ans);
   });
 
-  it('should keep only one space for repeating space, speficied or by default', () => {
+  it('should keep only one space for repeating spaces, speficied or by default', () => {
     const str = ' ;  ;; ;     ; \n\n ; \r\n\r\n;;;  ; \r ;';
     const ans = '; ;; ; ;\n;\n;;; ;\n;';
     let t = punct(str, { space: 'single' });
