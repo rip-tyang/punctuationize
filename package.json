@@ -2,6 +2,9 @@
   "name": "punctuationize",
   "version": "1.0.0",
   "description": "punctuationize your text, wipping out all things except punctuations.",
+  "bin": {
+    "punctuationize": "bin/punctuationize.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "npm run eslint && npm run coverage",

@@ -1,4 +1,4 @@
-module.exports = (function Punctuationize() {
+module.exports = (function () {
   const notPunctReg = /[^\s\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g;
 
   function makeDefault(configObj) {
