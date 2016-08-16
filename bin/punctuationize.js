@@ -21,13 +21,11 @@ if (commander.space !== 'single' &&
   commander.help();
 }
 
-let fd;
-fd = fs.readFileSync(path.join('.', commander.args[0]));
-fd = fd.toString();
-const res = punctuationize(fd, { space: commander.space });
+const inputStr = fs.readFileSync(path.resolve(commander.args[0])).toString();
+const res = punctuationize(inputStr, { space: commander.space });
 
 if (commander.output === undefined) {
   process.stdout.write(res);
 } else {
-  fs.writeFileSync(path.join('.', commander.output), res);
+  fs.writeFileSync(path.resolve(commander.output), res);
 }
