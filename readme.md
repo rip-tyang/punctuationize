@@ -5,7 +5,7 @@
 This is a project made for fun.
 It wipe out everything except punctuation marks.
 
-Usage: punctuationize [options] <file>
+Usage: punctuationize [options] \<file\>
 
 Options:
 
